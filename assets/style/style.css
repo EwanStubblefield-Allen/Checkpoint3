@@ -1,0 +1,32 @@
+/* BASIC STYLES HERE */
+
+/* SECTION Element Selectors */
+body {
+  color: white
+}
+
+img {
+  max-height: 65dvh;
+}
+
+p {
+  margin: 0;
+}
+
+/* SECTION Class Selectors */
+.journal-bg {
+  height: 75dvh;
+  border-radius: 10px;
+  background: #36364C;
+}
+
+.form-text {
+  border: none;
+  border-bottom: 1px solid #9A8C98;
+  background-color: transparent;
+  width: 18dvw;
+}
+
+.trash {
+  color: red;
+}
