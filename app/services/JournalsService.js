@@ -36,12 +36,10 @@ class JournalsService {
   saveJournals(newNotes) {
     let journal = AppState.activeJournal
     if (newNotes == journal.notes) {
-      console.log('journal is same');
       return
     }
     journal.notes = newNotes
     journal.updatedDate = new Date().toLocaleString()
-    console.log('new Journal', journal);
     AppState.emit('journals')
   }
 

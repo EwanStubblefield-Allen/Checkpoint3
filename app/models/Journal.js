@@ -26,13 +26,13 @@ export class Journal {
       <section class="row">
         <div class="col-4 p-4">
           <div class="d-flex align-items-center">
-            <p class="fs-2">Name: ${this.name}</p>
+            <p class="fs-1">${this.name}</p>
             <i class="mdi mdi-circle-outline p-3" style="color: ${this.color};"></i>
           </div>
           <div class="text-start py-3">
             <p>Created At: ${this.createdDate}</p>
             <p class="py-3">Last Update: ${this.updatedDate}</p>
-            <p>Words: ${this.wordCount}, Characters: ${this.notes.length}</p>
+            <p id="${this.id}Count">Words: ${this.wordCount}, Characters: ${this.notes.length}</p>
           </div>
         </div>
         <div class="col-7 p-5 text-center">
@@ -53,6 +53,11 @@ export class Journal {
     return words
   }
 
+  get count() {
+    return `Words: ${this.wordCount}, Characters: ${this.notes.length}`
+  }
+
+  // STUB Time since last updated
   // get formattedDate() {
   //   let seconds = new Date().getSeconds() - this.updatedDate
   //   let minutes = Math.floor(seconds / 60) % 60

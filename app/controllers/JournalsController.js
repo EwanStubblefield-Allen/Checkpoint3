@@ -7,13 +7,16 @@ import { setHTML, setText } from "../utils/Writer.js";
 let intervalId = null
 
 function _setAutoSave() {
-  clearInterval(intervalId)
-  intervalId = setTimeout(_save, 10000)
+  if (!intervalId) {
+    intervalId = setInterval(_save, 1000)
+  }
 }
 
 function _save() {
   let newNotes = document.getElementById('journalText').value
   journalsService.saveJournals(newNotes)
+  setText(`${AppState.activeJournal.id}Count`, AppState.activeJournal.count)
+  console.log('Saved');
 }
 
 function _drawJournals() {
@@ -34,6 +37,12 @@ function _drawActiveJournal() {
   _setAutoSave()
 }
 
+function focusText() {
+  let textElement = document.getElementById('journalText')
+  textElement.focus()
+  textElement.setSelectionRange(textElement.value.length, textElement.value.length)
+}
+
 export class JournalsController {
   constructor() {
     console.log('Journals Controller Loaded');
@@ -47,11 +56,7 @@ export class JournalsController {
 
   setActiveJournal(journalId) {
     journalsService.setActiveJournal(journalId)
-    let textElement = document.getElementById('journalText')
-    setTimeout(() => {
-      textElement.focus()
-      textElement.setSelectionRange(textElement.value.length, textElement.value.length)
-    }, 400)
+    setTimeout(focusText, 400)
   }
 
   createJournal(event) {
@@ -73,7 +78,6 @@ export class JournalsController {
     if (!isYes) {
       return
     }
-    console.log('delete journal?', journalId);
     journalsService.deleteJournal(journalId)
   }
 

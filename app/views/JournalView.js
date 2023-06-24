@@ -11,7 +11,7 @@ export const JournalView = `
     
     </div>
     <form onsubmit="app.JournalsController.createJournal(event)" class="d-flex align-items-center fs-2">
-      <input type="text" minlength="3" maxlength="15" class="form-text" placeholder="Create Note" name="name" required>
+      <input type="text" minlength="3" maxlength="15" class="form-text" placeholder="Create Note" name="name" autocomplete="off" required>
       <input type="color" class="mx-2" name="color" required>
       <button type="submit" class="btn btn-light">
         <i class="mdi mdi-plus"></i>
